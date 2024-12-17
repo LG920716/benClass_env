@@ -24,12 +24,9 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:a5d30a3
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:f666ece
           ports:
             - containerPort: 80
-          env:
-            - name: BACKEND_API_URL
-              value: "http://backend-service:8000"
 ---
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
@@ -99,7 +96,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:a5d30a3
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:f666ece
           ports:
             - containerPort: 8000
           envFrom:
@@ -125,4 +122,5 @@ spec:
     - protocol: TCP
       port: 8000
       targetPort: 8000
-  type: ClusterIP
+  type: LoadBalancer
+  loadBalancerIP: "34.102.224.16"
