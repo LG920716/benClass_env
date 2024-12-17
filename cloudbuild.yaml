@@ -1,0 +1,37 @@
+steps:
+# This step deploys the new version of our container image
+# in the cicd-project Kubernetes Engine cluster.
+- name: 'gcr.io/cloud-builders/kubectl'
+  id: Deploy
+  args:
+  - 'apply'
+  - '-f'
+  - 'kubernetes.yaml'
+  env:
+  - 'CLOUDSDK_COMPUTE_REGION=asia-east1'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=benclass'
+
+# This step copies the applied manifest to the production branch
+# The COMMIT_SHA variable is automatically
+# replaced by Cloud Build.
+- name: 'gcr.io/cloud-builders/git'
+  id: Copy to production branch
+  entrypoint: /bin/sh
+  args:
+  - '-c'
+  - |
+    set -x && \
+    # Configure Git to create commits with Cloud Build's service account
+    git config --global url."https://${_GITHUB_TOKEN}:@github.com/".insteadOf "https://github.com/" && \
+    git config user.email ray123045608075@gmail.com && \
+    # Switch to the production branch and copy the kubernetes.yaml file from the candidate branch
+    git fetch origin production && git checkout production && \
+    git checkout $COMMIT_SHA kubernetes.yaml && \
+    # Commit the kubernetes.yaml file with a descriptive commit message
+    git commit -m "Manifest from commit $COMMIT_SHA
+    $(git log --format=%B -n 1 $COMMIT_SHA)" && \
+    # Push the changes back to github Repository
+    git push origin production
+logsBucket: 'gs://benclass'
+options:
+  logging: GCS_ONLY
