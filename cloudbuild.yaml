@@ -6,27 +6,7 @@ steps:
   args:
   - 'apply'
   - '-f'
-  - 'k8s/backend_secret.yaml'
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=benclass'
-
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Deploy Fronend
-  args:
-  - 'apply'
-  - '-f'
-  - 'k8s/frontend_deployment.yaml'
-  env:
-  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=benclass'
-
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Deploy Backend
-  args:
-  - 'apply'
-  - '-f'
-  - 'k8s/backend_deployment.yaml'
+  - 'kubernetes.yaml'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=benclass'
