@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:9f3979f
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:2438df8
           ports:
             - containerPort: 80
 ---
@@ -64,6 +64,20 @@ spec:
       port:
         number: 443
 ---
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
+metadata:
+  name: my-backendconfig
+spec:
+  healthCheck:
+    checkIntervalSec: 30
+    timeoutSec: 30
+    healthyThreshold: 2
+    unhealthyThreshold: 2
+    type: HTTPS
+    requestPath: /
+    port: 443
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -82,7 +96,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:9f3979f
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:2438df8
           ports:
             - containerPort: 8000
           envFrom:
