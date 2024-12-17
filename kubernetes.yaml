@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:f264570
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:9f3979f
           ports:
             - containerPort: 80
 ---
@@ -42,12 +42,12 @@ metadata:
   name: frontend-service
 spec:
   selector:
-    app: frontend-deployment
+    app: frontend
   type: ClusterIP
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 443
+      targetPort: 443
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -60,9 +60,9 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: backend-service
+      name: frontend-service
       port:
-        number: 80
+        number: 443
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -82,7 +82,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:f264570
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:9f3979f
           ports:
             - containerPort: 8000
           envFrom:
@@ -107,6 +107,6 @@ spec:
     app: backend
   ports:
     - protocol: TCP
-      port: 80
+      port: 8000
       targetPort: 8000
   type: ClusterIP
