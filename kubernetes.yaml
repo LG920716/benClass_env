@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:1069307
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:223b5a0
           ports:
             - containerPort: 80
 ---
@@ -49,7 +49,7 @@ spec:
       port: 80
       targetPort: 80
 ---
-apiVersion: v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: frontend-ingress
@@ -82,7 +82,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/cbenclass:1069307
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/cbenclass:223b5a0
           ports:
             - containerPort: 80
           envFrom:
