@@ -24,9 +24,12 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:9923a14
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:dd6b78f
           ports:
             - containerPort: 80
+          env:
+            - name: BACKEND_API_URL
+              value: "http://backend-service:8000"
 ---
 apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
@@ -96,7 +99,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:9923a14
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:dd6b78f
           ports:
             - containerPort: 8000
           envFrom:
