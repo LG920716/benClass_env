@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:f563d0e
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:71e7688
           ports:
             - containerPort: 80
 ---
@@ -96,7 +96,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:f563d0e
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:71e7688
           ports:
             - containerPort: 8000
           envFrom:
@@ -151,5 +151,5 @@ spec:
     healthyThreshold: 2
     unhealthyThreshold: 2
     type: HTTP
-    requestPath: /healthcheck
+    requestPath: healthcheck
     port: 8000
