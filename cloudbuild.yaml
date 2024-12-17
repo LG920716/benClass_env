@@ -2,33 +2,13 @@ steps:
 # This step deploys the new version of our container image
 # in the cicd-project Kubernetes Engine cluster.
 - name: 'gcr.io/cloud-builders/kubectl'
-  id: Create Secret
+  id: Deploy
   args:
   - 'apply'
   - '-f'
-  - 'k8s/backend_secret.yaml'
+  - 'kubernetes.yaml'
   env:
-  - 'CLOUDSDK_COMPUTE_REGION=asia-east1'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=benclass'
-
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Deploy Fronend
-  args:
-  - 'apply'
-  - '-f'
-  - 'k8s/frontend_deployment.yaml'
-  env:
-  - 'CLOUDSDK_COMPUTE_REGION=asia-east1'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=benclass'
-
-- name: 'gcr.io/cloud-builders/kubectl'
-  id: Deploy Backend
-  args:
-  - 'apply'
-  - '-f'
-  - 'k8s/backend_deployment.yaml'
-  env:
-  - 'CLOUDSDK_COMPUTE_REGION=asia-east1'
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=benclass'
 
 # This step copies the applied manifest to the production branch
