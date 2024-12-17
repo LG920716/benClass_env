@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:2454a9c
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:8bc88c2
           ports:
             - containerPort: 80
 ---
@@ -96,7 +96,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:2454a9c
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:8bc88c2
           ports:
             - containerPort: 8000
           envFrom:
@@ -111,16 +111,31 @@ spec:
           secret:
             secretName: backend-secret
 ---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: "benclass-backend"
+  labels:
+    app: backend
+spec:
+  defaultBackend:
+    service:
+      name: backend-service
+      port:
+        number: 8000
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: backend-service
+  labels:
+    app: backend
 spec:
+  type: NodePort
   selector:
     app: backend
   ports:
-    - protocol: TCP
-      port: 8000
-      targetPort: 8000
-  type: LoadBalancer
-  loadBalancerIP: "34.102.224.16"
+  - port: 8000
+    targetPort: 8000
