@@ -2,7 +2,7 @@ steps:
 # This step deploys the new version of our container image
 # in the cicd-project Kubernetes Engine cluster.
 - name: 'gcr.io/cloud-builders/kubectl'
-  id: Create Secret
+  id: Deploy
   args:
   - 'apply'
   - '-f'
