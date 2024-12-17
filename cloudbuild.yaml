@@ -8,7 +8,7 @@ steps:
   - '-f'
   - 'k8s/backend_secret.yaml'
   env:
-  - 'CLOUDSDK_COMPUTE_REGION=asia-east1'
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=benclass'
 
 - name: 'gcr.io/cloud-builders/kubectl'
@@ -18,7 +18,7 @@ steps:
   - '-f'
   - 'k8s/frontend_deployment.yaml'
   env:
-  - 'CLOUDSDK_COMPUTE_REGION=asia-east1'
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=benclass'
 
 - name: 'gcr.io/cloud-builders/kubectl'
@@ -28,7 +28,7 @@ steps:
   - '-f'
   - 'k8s/backend_deployment.yaml'
   env:
-  - 'CLOUDSDK_COMPUTE_REGION=asia-east1'
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-a'
   - 'CLOUDSDK_CONTAINER_CLUSTER=benclass'
 
 # This step copies the applied manifest to the production branch
