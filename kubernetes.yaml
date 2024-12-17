@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:dd6b78f
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:a5d30a3
           ports:
             - containerPort: 80
           env:
@@ -99,7 +99,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:dd6b78f
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:a5d30a3
           ports:
             - containerPort: 8000
           envFrom:
@@ -119,7 +119,6 @@ kind: Service
 metadata:
   name: backend-service
 spec:
-  clusterIP: 34.118.224.5
   selector:
     app: backend
   ports:
