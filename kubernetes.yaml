@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:490c144
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:2e683c8
           ports:
             - containerPort: 80
 ---
@@ -96,7 +96,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:490c144
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:2e683c8
           ports:
             - containerPort: 8000
           envFrom:
