@@ -1,3 +1,11 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backend-secret
+type: Opaque
+data:
+  config.json: ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAiYmVuY2xhc3MtZGM2MTUiLAogICJwcml2YXRlX2tleV9pZCI6ICJjODA1YjY0ZDMzZTlhYWQ2N2NlYjM3NWQyYTQzZTdkYjc3OTQ4ODZhIiwKICAicHJpdmF0ZV9rZXkiOiAiLS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tXG5NSUlFdlFJQkFEQU5CZ2txaGtpRzl3MEJBUUVGQUFTQ0JLY3dnZ1NqQWdFQUFvSUJBUURWUWVSSExpRTFaMjhSXG5XNnJGbkVCWnI3MHlweFhnZ1BCS1psVk5JWW52NnBnaldJRjFlMjd0UXl4THZ5R0U1WmtoVG5naHdVUHA0RjlaXG5ERFcxbmdHSXRZZVBTMW1UL3BSUmNIb3BYNjlRU09mV0R4cHZ2a0NlbVp6S3BWOE5LeWYxeTlMc3ArWkZzK1dsXG54blAyM29VZ2U0aTZ0SG9DcDBHc201eVljMDQvYmZEVlVKOFR2bmQ4V3hoa1BndktqM3NxYWFDTmJLWDZidjRTXG5FZmVlUWEvU3BzOXY4WnJES3p2TWRaY0xKcmVJSkpuV1FoWGVQUktSalFRZGdCU2JBb0pudWtNWExBbUJDbGFFXG43RXR0Q0dwU1pqdzc5blJmNlpBRWIxSDlDVjA4elN5TklaNVRuTDA1d0MvV0RWUjBhdWdiQUJ3dFo4NzNIWTV4XG42aVV3S2ZlQkFnTUJBQUVDZ2dFQURkZkEzUk9rRVY3S2hzdldrT0lQWUVoUzBFSDl5WGRTZ2JYVSt0Uis2eGY2XG5oNjErcG5VSEhUZHVIWkx3SVZFSkNMQ0ZXNXJtRVJLZzJ5WWxLZ255QzJFak1KeVd4RG56S28vUjhqTy83TWJLXG51NytsRUQ5VWhsR3VLK09pVmswVFF6YUNRQjAyOVVFcFJVS1Zua21tbThEcnZoalVlYTNJaXM4d0VmVHhlRUdlXG5RaW1PckFtSTM1UnZtYnYyeWdlaHpIemFDMWhHZzJlWm1TNlhIcGFJQ2Vsbk56Mi8xUGZZYVIwbXhRT2ZVMWdpXG5PeHhYY21IYW5Ybyt0aGQrTDZMNmx4citOS3BJK2l5b0N6dTJRNDd2S3F4QjNUQ0hyNEljd0ZDTElsYjl4cGxrXG4wRU5GSXdYd2JPeWQzZ0ZkV29BNzlPam9JNnVWMFhVdVJRUFZlZlNleFFLQmdRRHZ0Z29TWmFYSG1sd2xxSDhQXG5TOXJZbnZWNDNBelliZDFONW5xRlZUc0hJSXdTTlZSRFdnYUZEVmFJUU5WR2gzdnp3Zmk0RUlUOGxpSkpmUzRzXG42QldBZ1JYOXlEcXB5MTI5d1A2V21EbkY0akJDektrakUydy96NE5sZ3gyWXMvMDJpZFBwdkd1TzdKcklHdG5BXG5KQURBUmZFQUt4NlBjTjVQVGlETlVodWkzUUtCZ1FEanY2dHYzOXNVcWNRNVl2U08wbVdzSHV5MElxRUo4UCtjXG50MHJTaGZ5YlVkYktoNDhDZ2R4VktVVkptcFF0aDlSeXl4ZGovUWZUZ1pOeW9QTVZjT2xGMWhQdEpoenR4QnZYXG5lMS9NUzFSeGhaQTVLbm16Y2ltcE9VQnRELzc4eWpjT0psSmhWNnpiMDRqdzlyS3luZFoyYWxaa1JiM1pBN1pQXG5JK2FQVnJEaTlRS0JnSHRHQzZId1lqUG0vdkppMTR6ZlBwbGVEZkRzZ1RLZ05Vb0ZlQWF2a1I2V0wxS0IyR2FXXG5tbm04SlQ4RzBHZG43MmVvM2lhU1lFR2hWOXFoSktqMVpYRmpjUkxFOE40MjltdEtIK01FUDlteSs0eXV3V0NIXG5jWWpUUjhoaGlFdnFiQktyQ0s3UU5pUVhLM1l5MEw2T0JWRGI1eGRtRlY1QTlpS2tsQnZpMk5HRkFvR0JBTUQ3XG4wQnhMVnN2cWt0Q0J6bk1iUzNZTytrb2xzY25Id2dFY3U3VXFQZ09xMUZQbmpFSDJvaW96ZjNmQUdXRi9ZSUVwXG5JSmZrZC9ZOExTSUx5ZzlZRHdMVFJTMUZoMnZlS2kxc2FKK25FVlhrZEhKTVVMWEN2aFNiNDhER3RpMmtlQVJ3XG5hb3Y3akFqMTlXc2gwQWhVZ0w3MG1tSDdTc1NTUmJCSDNuMkZXdnZsQW9HQVk2TnY3SXZuV1FwNHRHTGMzQTJzXG5jWXhvaGlPVDZZNWFkbjBoMWduYmtmM0FsWGtha1B0OUplL2I3MXlzZlBIcndVM2E1b29VekRmTXMxdHZCc0MrXG5teXpSOGlxbDFxaS9waFFNUHgwOUdiNTd6ZDArSVpBaldabVJ5WW85Z2VTVHVsczdRZ05kdVYwZnl2S3AxMmpWXG5UOGFhU24wSGJnMDFKYm5xS25KVTljaz1cbi0tLS0tRU5EIFBSSVZBVEUgS0VZLS0tLS1cbiIsCiAgImNsaWVudF9lbWFpbCI6ICJmaXJlYmFzZS1hZG1pbnNkay04eWZlekBiZW5jbGFzcy1kYzYxNS5pYW0uZ3NlcnZpY2VhY2NvdW50LmNvbSIsCiAgImNsaWVudF9pZCI6ICIxMTI5ODkwNDEyNTM0MjMwNjUxNDYiLAogICJhdXRoX3VyaSI6ICJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvYXV0aCIsCiAgInRva2VuX3VyaSI6ICJodHRwczovL29hdXRoMi5nb29nbGVhcGlzLmNvbS90b2tlbiIsCiAgImF1dGhfcHJvdmlkZXJfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9vYXV0aDIvdjEvY2VydHMiLAogICJjbGllbnRfeDUwOV9jZXJ0X3VybCI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9yb2JvdC92MS9tZXRhZGF0YS94NTA5L2ZpcmViYXNlLWFkbWluc2RrLTh5ZmV6JTQwYmVuY2xhc3MtZGM2MTUuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJ1bml2ZXJzZV9kb21haW4iOiAiZ29vZ2xlYXBpcy5jb20iCn0=
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -5,7 +13,7 @@ metadata:
   labels:
     app: frontend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: frontend
@@ -16,7 +24,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:93b4167
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:223b5a0
           ports:
             - containerPort: 80
 ---
@@ -41,7 +49,7 @@ spec:
       port: 80
       targetPort: 80
 ---
-apiVersion: v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: frontend-ingress
@@ -55,6 +63,7 @@ spec:
       name: backend-service
       port:
         number: 80
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -62,7 +71,7 @@ metadata:
   labels:
     app: backend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: backend
@@ -73,7 +82,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/cbenclass:93b4167
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/cbenclass:223b5a0
           ports:
             - containerPort: 80
           envFrom:
