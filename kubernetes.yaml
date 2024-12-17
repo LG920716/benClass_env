@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:52a1022
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:f563d0e
           ports:
             - containerPort: 80
 ---
@@ -96,7 +96,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:52a1022
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:f563d0e
           ports:
             - containerPort: 8000
           envFrom:
@@ -110,6 +110,20 @@ spec:
         - name: secret-volume
           secret:
             secretName: backend-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  labels:
+    app: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: backend
+  ports:
+  - port: 8000
+    targetPort: 8000
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -126,16 +140,16 @@ spec:
       port:
         number: 8000
 ---
-apiVersion: v1
-kind: Service
+apiVersion: cloud.google.com/v1
+kind: BackendConfig
 metadata:
-  name: backend-service
-  labels:
-    app: backend
+  name: my-backend-config
 spec:
-  type: NodePort
-  selector:
-    app: backend
-  ports:
-  - port: 8000
-    targetPort: 8000
+  healthCheck:
+    checkIntervalSec: 30
+    timeoutSec: 30
+    healthyThreshold: 2
+    unhealthyThreshold: 2
+    type: HTTP
+    requestPath: /healthcheck
+    port: 8000
