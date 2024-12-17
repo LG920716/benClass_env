@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/cicd-project:ac7b8a1
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:93b4167
           ports:
             - containerPort: 80
 ---
@@ -73,7 +73,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/cicd-project:ac7b8a1
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/cbenclass:93b4167
           ports:
             - containerPort: 80
           envFrom:
