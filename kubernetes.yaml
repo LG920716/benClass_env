@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/cicd-project:39c8e70
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/cicd-project:a8f7523
           ports:
             - containerPort: 80
 ---
@@ -73,7 +73,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/cicd-project:39c8e70
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/cicd-project:a8f7523
           ports:
             - containerPort: 80
           envFrom:
@@ -85,7 +85,7 @@ kind: Service
 metadata:
   name: backend-service
 spec:
-  clusterIP: 10.0.0.2
+  clusterIP: 34.118.224.5
   selector:
     app: backend
   ports:
