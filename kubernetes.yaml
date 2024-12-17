@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:e0fa630
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:a1ec3f7
           ports:
             - containerPort: 80
 ---
@@ -84,14 +84,14 @@ spec:
         - name: backend
           image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:3effcc0
           ports:
-            - containerPort: 80
+            - containerPort: 8000
           envFrom:
             - secretRef:
                 name: backend-secret
           volumeMounts:
             - name: secret-volume
-              mountPath: /app/.env
-              subPath: config.json
+              mountPath: /app/config.json
+              subPath: config.json   # 這裡直接把 config.json 挂載到 /app 目錄下，容器應用會讀取它
       volumes:
         - name: secret-volume
           secret:
