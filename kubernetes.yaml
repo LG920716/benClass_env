@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:f666ece
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-frontend-repository/benclass:14b284b
           ports:
             - containerPort: 80
 ---
@@ -96,7 +96,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:f666ece
+          image: asia-east1-docker.pkg.dev/tw-rd-ca-ray-huang/my-backend-repository/benclass:14b284b
           ports:
             - containerPort: 8000
           envFrom:
@@ -115,6 +115,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: backend-service
+  annotations:
+    cloud.google.com/l4-rbs: "enabled"
 spec:
   selector:
     app: backend
